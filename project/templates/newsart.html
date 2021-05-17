@@ -1,0 +1,15 @@
+<!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+
+{% block title %}
+<h1> {{ newsart.title }} </h1>
+{% endblock title %}
+
+{% block content %}
+<h3> {{ newsart.title|censor }} </h3> <br>
+<i>{{ newsart.author }} </i> <br>
+{{ newsart.dateCreation|date:'d M Y' }} {{ newsart.dateCreation|time:"H:i" }} <br>
+{{ newsart.text|censor }}
+{% endblock content %}

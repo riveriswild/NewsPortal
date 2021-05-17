@@ -1,0 +1,22 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %} All news articles {% endblock %}
+
+{% block content %}
+<h1>Все новости:</h1>
+
+<hr>
+     {% if news %}
+        {% for newsart in news %}
+                   <h3> {{ newsart.title|censor }} </h3> <br>
+                    {{ newsart.dateCreation|date:'d M Y' }}  <br>
+                    {{ newsart.text|truncatechars:50|censor }} <br>
+
+        {% endfor %}
+
+{% else %}
+  <h2>No news</h2>
+{% endif %}
+{% endblock content %}
